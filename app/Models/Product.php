@@ -11,17 +11,17 @@ class Product extends Model
 
     public function scopePop($query)
     {
-        return $query->where('total_seen' , '>' , 500);
+        return $query->where('total_seen', '>', 500);
     }
 
     public function scopeFav($query)
     {
-        return $query->where('total_sell_quantity' , '>' , 25);
+        return $query->where('total_sell_quantity', '>', 25);
     }
 
-    public function scopeNameLike($query,$name)
+    public function scopeNameLike($query, $name)
     {
-        return $query->where('name' , 'LIKE' , "%$name%");
+        return $query->where('name', 'LIKE', "%$name%");
     }
 
     public function category()
@@ -33,5 +33,4 @@ class Product extends Model
     {
         return $this->hasMany(Order::class);
     }
-
 }

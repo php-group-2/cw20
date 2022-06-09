@@ -14,9 +14,8 @@ class Order extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function category()
-    {
-        return $this->hasOneThrough(  Category::class , Product::class);
-    }
-
+    // public function productCategory()
+    // {
+    //     return $this->hasOneThrough(Category::class, Product::class);
+    // }
 }
