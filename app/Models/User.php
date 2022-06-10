@@ -49,7 +49,6 @@ class User extends Authenticatable
         return Attribute::make(
             set: fn ($value) => strtolower($value),
             get: fn ($value) => strtoupper($value),
-
         );
     }
 
@@ -97,5 +96,15 @@ class User extends Authenticatable
     public function getFullNameAttribute()
     {
         return "{$this->first_name} + {$this->last_name}";
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function jobs()
+    {
+        return $this->belongsToMany(Job::class);
     }
 }

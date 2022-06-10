@@ -35,7 +35,17 @@ class Category extends Model
     protected function parentId(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => !$value ? "ندارد" : $value
+            get: fn ($value) => is_null($value) ? "ندارد" : $value
+        );
+    }
+
+    protected function status(): Attribute
+    {
+        return Attribute::make(
+            get: function ($value) {
+                if ($value == 'show') return 'منتشر شده';
+                if ($value == 'notShow') return 'منتشر نشده';
+            }
         );
     }
 }

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Job;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -17,7 +18,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(5)->create();
+        \App\Models\User::factory(5)->create();
+
+        Job::factory(10)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
