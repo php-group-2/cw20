@@ -43,6 +43,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
     protected function email(): Attribute
     {
         return Attribute::make(
@@ -65,11 +66,36 @@ class User extends Authenticatable
             get: fn ($value) => ucfirst($value),
         );
     }
+
     protected function city(): Attribute
     {
         return Attribute::make(
             get: fn ($value) => ucfirst($value),
         );
     }
-}
 
+    /**
+     * Laravel 9.x
+     * Get the user's full name.
+     *
+     * @return string
+     */
+    // public function fullName(): Attribute
+    // {
+    //     return Attribute::make(
+    //         get: fn ($value, $attributes)
+    //         => $attributes['first_name'] . ' ' . $attributes['last_name'],
+    //     );
+    // }
+
+    /**
+     * Laravel 8.x
+     * Get the user's full name.
+     *
+     * @return string
+     */
+    public function getFullNameAttribute()
+    {
+        return "{$this->first_name} + {$this->last_name}";
+    }
+}
