@@ -54,5 +54,7 @@ class DatabaseSeeder extends Seeder
         ];
 
         Order::insert($orders);
+
+
     }
 }
