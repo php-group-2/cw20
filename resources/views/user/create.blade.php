@@ -1,38 +1,41 @@
 @extends('layouts.layout')
 
 @section('main')
-    <form class="w-full max-w-lg" method="post" action="{{route('user')}}">
-        <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                    First Name
-                </label>
-                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane">
-                <p class="text-red-500 text-xs italic">Please fill out this field.</p>
-            </div>
-            <div class="w-full md:w-1/2 px-3">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                    Last Name
-                </label>
-                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe">
-            </div>
+    <form action="{{route('users.store')}}" class="w-3/6 h-4/6 text-center m-auto border-2 p-10 mt-28" method="POST">
+        @csrf
+        <div class="relative h-14 z-0 mb-5 w-full">
+            <input type="text" class="absolute text-indigo-800 bottom-0 right-0 left-0 w-full h-10 text-sm bg-transparent border-b-2 border-b-gray-400 text-center focus:border-b-indigo-600 valid:border-b-indigo-600 focus:outline-none peer" required name="first_name" id="" />
+            <label id="label" for="" class="absolute m-auto top-6 right-0  left-0 text-gray-500 -z-10 transform peer-focus:text-indigo-600 peer-focus:top-0 peer-valid:text-indigo-600 peer-valid:top-0 peer-valid:text-sm peer-focus:text-xs duration-300">firstname</label>
         </div>
-        <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full px-3">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="mail">
-                    Email
-                </label>
-                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="mail" type="email" >
-            </div>
-        </div>
-        <div class="flex flex-wrap -mx-3 mb-2">
-            <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-                    City
-                </label>
-                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" placeholder="Albuquerque">
-            </div>
+        <div class="relative h-14 z-0 mb-5 w-full">
+            <input type="text" class="absolute text-indigo-800 bottom-0 right-0 left-0 w-full h-10 text-sm bg-transparent border-b-2 border-b-gray-400 text-center focus:border-b-indigo-600 valid:border-b-indigo-600 focus:outline-none peer" required  name="last_name" id="" />
+            <label id="label" for="" class="absolute m-auto top-6 right-0  left-0 text-gray-500 -z-10 transform peer-focus:text-indigo-600 peer-focus:top-0 peer-valid:text-indigo-600 peer-valid:top-0 peer-valid:text-sm peer-focus:text-xs duration-300">lastname</label>
 
         </div>
+        <div class="relative h-14 z-0 mb-5 w-full">
+            <input type="email" class="absolute text-indigo-800 bottom-0 right-0 left-0 w-full h-10 text-sm bg-transparent border-b-2 border-b-gray-400 text-center focus:border-b-indigo-600 valid:border-b-indigo-600 focus:outline-none peer" required placeholder="" name="email" id="" />
+            <label id="label" for="" class="absolute m-auto top-6 right-0  left-0 text-gray-500 -z-10 transform peer-focus:text-indigo-600 peer-focus:top-0 peer-valid:text-indigo-600 peer-valid:top-0 peer-valid:text-sm peer-focus:text-xs duration-300">Email</label>
+
+        </div>
+
+        <div class="relative h-14 z-0 mb-5 w-full">
+
+
+
+            <select id="underline_select" name="city" class="block border-b-gray-400  text-center py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                <option value="null" selected disabled>select your city</option>
+                <option class="bg-indigo-700 hover:text-bold text-white" value="tehran" >tehran</option>
+                <option class="bg-indigo-700 hover:text-bold text-white" value="hamedan">hamedan</option>
+                <option class="bg-indigo-700 hover:text-bold text-white" value="shiraz">shiraz</option>
+
+
+            </select>
+{{--            <label class="absolute  top-2 left-0  text-gray-500 -z-10 transform peer-focus:top-0 peer-focus:text-indigo-700--}}
+{{--          duration-300" for="underline_select">Select One</label>--}}
+{{--            <a href="/aboutOptions" class="text-indigo-400 hover:text-indigo-600 duration-300 absolute left-0 right-0 bottom-[-30px]" href="">About Options&rarr;</a>--}}
+        </div>
+        <button type="submit" value="submit" name="submit" class="bg-indigo-400 mt-9 text-white p-2 w-40 hover:bg-indigo-600 rounded-md duration-300">
+            Submit
+        </button>
     </form>
 @endsection
