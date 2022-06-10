@@ -9,6 +9,8 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $visible = ['id', 'name', 'price'];
+
     public function scopePop($query)
     {
         return $query->where('total_seen', '>', 500);

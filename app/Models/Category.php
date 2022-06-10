@@ -9,6 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $hidden = ['created_at', 'updated_at'];
+
     public function scopeParentCategory($query)
     {
         return $query->whereNull('parent_id');
@@ -16,7 +18,7 @@ class Category extends Model
 
     public function scopeShow($query)
     {
-        return $query->where('status' , '=' , 'show' );
+        return $query->where('status', '=', 'show');
     }
 
     public function product()
@@ -26,8 +28,6 @@ class Category extends Model
 
     public function orders()
     {
-        return $this->hasManyThrough(Order::class , Product::class);
+        return $this->hasManyThrough(Order::class, Product::class);
     }
-
-
 }
